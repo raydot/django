@@ -69,12 +69,27 @@ class DeclarativeFieldsMetaclass(MediaDefiningClass):
 
 @html_safe
 @python_2_unicode_compatible
-class BaseForm(object):
+
+##ADDED FOR THE DJANGO TESTING TUTORIAL 5/7/18
+#class BaseForm(object):
     # This is the main implementation of all the Form logic. Note that this
     # class is different than Form. See the comments by the Form class for more
     # information. Any improvements to the form API should be made to *this*
     # class, not to the Form class.
+    
+    #field_order = None
+
+  
+class BaseForm:
+    # This is the main implementation of all the Form logic. Note that this
+    # class is different than Form. See the comments by the Form class for
+    # more information. Any improvements to the form API should be made to
+    # *this* class, not to the Form class.
     field_order = None
+    prefix = None
+    if prefix is not None:
+        self.prefix = prefix
+    ##END
 
     def __init__(self, data=None, files=None, auto_id='id_%s', prefix=None,
                  initial=None, error_class=ErrorList, label_suffix=None,
